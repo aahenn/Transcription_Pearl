@@ -300,7 +300,7 @@ class App(TkinterDnD.Tk):
         
         # Initialize other settings...
         self.main_df = pd.DataFrame(columns=["Index", "Page", "Original_Text", "Initial_Draft_Text", 
-                                        "Final_Draft", "Image_Path", "Text_Path", "Text_Toggle"])
+                                        "Final_Draft", "Image_Path", "Text_Path", "Text_Toggle", "Original_Image_Path"])
         
         # First set default values
         self.restore_defaults()
@@ -346,7 +346,7 @@ class App(TkinterDnD.Tk):
             self.error_logging(f"Failed to create temp directories: {e}")
 
         # Reset the main DataFrame
-        self.main_df = pd.DataFrame(columns=["Index", "Page", "Original_Text", "Initial_Draft_Text", "Final_Draft", "Image_Path", "Text_Path", "Text_Toggle"])
+        self.main_df = pd.DataFrame(columns=["Index", "Page", "Original_Text", "Initial_Draft_Text", "Final_Draft", "Image_Path", "Text_Path", "Text_Toggle", "Original_Image_Path"])
         self.page_counter = 0
 
 # Settings Window
@@ -785,7 +785,8 @@ class App(TkinterDnD.Tk):
                     "Final_Draft": [""],
                     "Image_Path": [dest_path],
                     "Text_Path": [text_file_path],
-                    "Text_Toggle": ["Original Text"]
+                    "Text_Toggle": ["Original Text"],
+                    "Original_Image_Path": [source_path]
                 })
                 self.main_df = pd.concat([self.main_df, new_row], ignore_index=True)
                 successful_copies += 1
@@ -915,7 +916,7 @@ class App(TkinterDnD.Tk):
     
     def reset_application(self):
         # Clear the main DataFrame
-        self.main_df = pd.DataFrame(columns=["Index", "Page", "Original_Text", "Initial_Draft_Text", "Final_Draft", "Image_Path", "Text_Path", "Text_Toggle"])
+        self.main_df = pd.DataFrame(columns=["Index", "Page", "Original_Text", "Initial_Draft_Text", "Final_Draft", "Image_Path", "Text_Path", "Text_Toggle", "Original_Image_Path"])
         
         # Reset page counter
         self.page_counter = 0
@@ -1481,7 +1482,7 @@ class App(TkinterDnD.Tk):
             return
 
         # Reset DataFrames
-        self.main_df = pd.DataFrame(columns=["Index", "Page", "Original_Text", "Initial_Draft_Text", "Final_Draft", "Image_Path", "Text_Path", "Text_Toggle"])
+        self.main_df = pd.DataFrame(columns=["Index", "Page", "Original_Text", "Initial_Draft_Text", "Final_Draft", "Image_Path", "Text_Path", "Text_Toggle", "Original_Image_Path"])
 
         # Reset page counter
         self.page_counter = 0
@@ -1553,7 +1554,8 @@ class App(TkinterDnD.Tk):
                 "Final_Draft", 
                 "Image_Path", 
                 "Text_Path", 
-                "Text_Toggle"
+                "Text_Toggle",
+                "Original_Image_Path"
             ])
 
             # Reset the page counter and flags
