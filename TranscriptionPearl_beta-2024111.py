@@ -315,10 +315,8 @@ class App(TkinterDnD.Tk):
             "claude-3-opus-20240229",
             "claude-3-sonnet-20240229",
             "claude-3-haiku-20240307",
-            "gemini-1.5-flash-001",
-            "gemini-1.5-flash-002",
-            "gemini-1.5-pro-001",
-            "gemini-1.5-pro-002"
+            "gemini-2.5-flash",
+            "gemini-2.5-pro",
         ]
 
         # Check if settings file exists and load it
@@ -611,7 +609,7 @@ class App(TkinterDnD.Tk):
         self.HTR_user_prompt = '''Carefully transcribe this page from an 18th/19th century document. In your response, write: "Transcription:" followed only by your accurate transcription.'''
         
         self.HTR_val_text = "Transcription:"
-        self.HTR_model = "gemini-1.5-pro-002"
+        self.HTR_model = "gemini-2.5-pro"
 
         self.correct_system_prompt = '''Your task is to compare handwritten pages of text with corresponding draft transcriptions, correcting the transcription to produce an accurate, publishable transcript. Be sure that the spelling, syntax, punctuation, and line breaks in the transcription match those on the handwritten page to preserve the historical integrity of the document. Numbers also easily misread, so pay close attention to digits. You must also ensure that the transcription begins and ends in the same place as the handwritten document. Include any catchwords at the bottom of the page. In your response write "Corrected Transcript:" followed by your corrected transcription.'''
         
@@ -629,10 +627,8 @@ class App(TkinterDnD.Tk):
             "claude-3-opus-20240229",
             "claude-3-sonnet-20240229",
             "claude-3-haiku-20240307",
-            "gemini-1.5-flash-001",
-            "gemini-1.5-flash-002",
-            "gemini-1.5-pro-001",
-            "gemini-1.5-pro-002"
+            "gemini-2.5-flash",
+            "gemini-2.5-pro",
         ]
 
         self.openai_api_key = ""
