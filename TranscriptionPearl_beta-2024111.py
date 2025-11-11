@@ -493,7 +493,7 @@ class App(TkinterDnD.Tk):
         self.main_model_var = tk.StringVar(value=self.correct_model)
         dropdown = ttk.Combobox(frame, textvariable=self.main_model_var, values=self.model_list, state="readonly", width=30)
         dropdown.grid(row=2, column=1, padx=10, pady=5, sticky="w")
-        dropdown.bind("<<ComboboxSelected>>", lambda event: setattr(self, 'correct_text_model', self.main_model_var.get()))
+        dropdown.bind("<<ComboboxSelected>>", lambda event: setattr(self, 'correct_model', self.main_model_var.get()))
 
         general_label = tk.Label(frame, text="General Instructions:")
         general_label.grid(row=3, column=0, padx=10, pady=5, sticky="w")
