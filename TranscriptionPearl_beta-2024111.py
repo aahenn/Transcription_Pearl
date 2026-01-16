@@ -318,7 +318,10 @@ class App(TkinterDnD.Tk):
             "gemini-1.5-flash-001",
             "gemini-1.5-flash-002",
             "gemini-1.5-pro-001",
-            "gemini-1.5-pro-002"
+            "gemini-1.5-pro-002",
+,
+            "gemini-3-pro-preview"            
+
         ]
 
         # Check if settings file exists and load it
@@ -632,7 +635,8 @@ class App(TkinterDnD.Tk):
             "gemini-1.5-flash-001",
             "gemini-1.5-flash-002",
             "gemini-1.5-pro-001",
-            "gemini-1.5-pro-002"
+            "gemini-1.5-pro-002",
+            "gemini-3-pro-preview",
         ]
 
         self.openai_api_key = ""
@@ -1571,8 +1575,17 @@ class App(TkinterDnD.Tk):
                 messagebox.showinfo("No Files", "No image files found in the selected directory.")
                 return
 
-            # Sort image files based on the numeric part after the underscore
-            image_files.sort(key=lambda x: int(x.split("_")[0]) if "_" in x else float('inf'))
+            # Sort image files based on leading digits else alphabetically
+            image_files.sort(
+                key=lambda x: (
+                    0,
+                    int(m.group(1)),
+                    x.lower()
+                ) if (m := re.match(r"(\d+)", x)) else (
+                    1,
+                    x.lower()
+                )
+            )            
 
             # Populate the DataFrame
             for i, image_file in enumerate(image_files, start=1):
