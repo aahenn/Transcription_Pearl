@@ -319,9 +319,7 @@ class App(TkinterDnD.Tk):
             "gemini-1.5-flash-002",
             "gemini-1.5-pro-001",
             "gemini-1.5-pro-002",
-,
-            "gemini-3-pro-preview"            
-
+            "gemini-3-pro-preview",
         ]
 
         # Check if settings file exists and load it
