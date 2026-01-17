@@ -740,6 +740,9 @@ class App(TkinterDnD.Tk):
     def resize_image(self, image_path, output_path, max_size=1980):
         with Image.open(image_path) as img:
            
+            # Correct orientation based on EXIF data
+            img = ImageOps.exif_transpose(img)
+
             # Get the original image size
             width, height = img.size
             
@@ -755,8 +758,6 @@ class App(TkinterDnD.Tk):
             
             # Resize the image
             img = img.resize((new_width, new_height), Image.LANCZOS)
-
-            img = ImageOps.exif_transpose(img)
             
             # Save the image with high quality
             img.save(output_path, "JPEG", quality=95)
