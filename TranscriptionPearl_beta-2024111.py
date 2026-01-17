@@ -253,7 +253,7 @@ class App(TkinterDnD.Tk):
 
     def create_image_widget(self, frame, image_path, state):
         # Load the image
-        original_image = Image.open(image_path)
+        original_image = ImageOps.exif_transpose(Image.open(image_path))
         self.photo_image = ImageTk.PhotoImage(original_image)
 
         # Create a canvas and add the image to it
@@ -716,7 +716,7 @@ class App(TkinterDnD.Tk):
     
     def load_image(self, image_path):
         # Load the image
-        self.original_image = Image.open(image_path)
+        self.original_image = ImageOps.exif_transpose(Image.open(image_path))
         
         # Apply the current scale to the image
         original_width, original_height = self.original_image.size
