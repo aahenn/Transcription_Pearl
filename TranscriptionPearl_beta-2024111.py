@@ -1567,8 +1567,17 @@ class App(TkinterDnD.Tk):
                 messagebox.showinfo("No Files", "No image files found in the selected directory.")
                 return
 
-            # Sort image files based on the numeric part after the underscore
-            image_files.sort(key=lambda x: int(x.split("_")[0]) if "_" in x else float('inf'))
+            # Sort image files based on leading digits else alphabetically
+            image_files.sort(
+                key=lambda x: (
+                    0,
+                    int(m.group(1)),
+                    x.lower()
+                ) if (m := re.match(r"(\d+)", x)) else (
+                    1,
+                    x.lower()
+                )
+            )            
 
             # Populate the DataFrame
             for i, image_file in enumerate(image_files, start=1):
